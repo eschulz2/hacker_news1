@@ -1,0 +1,9 @@
+<h2>Comments for <%= @post.title %></h2>
+<ol>
+  <% @post.comments.each do |comment| %>
+  <li>
+    <%= comment.body %> by: <%= User.find(comment.user_id).name %>
+  </li>
+  <% end %>
+</ol>
+
