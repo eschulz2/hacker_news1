@@ -1,11 +1,15 @@
 get '/' do
   # Look in app/views/index.erb
   @posts = Post.all
-  erb :index
+  if request.xhr?
+    erb :_all_posts, layout: false
+  else
+    erb :index
+  end
 end
 
-get '/create_post' do 
-  erb :create_post
+get '/create_post' do
+  erb :create_post, layout: !request.xhr?
 end
 
 get '/user/:user_id' do

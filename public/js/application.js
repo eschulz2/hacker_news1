@@ -1,7 +1,25 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $("a#create_post").click(function(event){
+    event.preventDefault();
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+   var $ourLink = $(this);
+   var url = $ourLink.attr("href");
+
+    $.get(url, function(response) {
+      // console.log(response);
+      console.log($ourLink);
+      $ourLink.after(response);
+    });
+  });
+  $(document).on("submit", "form#new_post", function(event){
+    event.preventDefault();
+    console.log(this);
+    var $ourForm = $(this);
+    var url = $ourForm.attr('action')
+    var data = $ourForm.serialize()
+    $.post(url, data, function(response) {
+      $('.all_posts').html(response);
+    })
+  })
+
 });

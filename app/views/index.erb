@@ -1,13 +1,6 @@
-<h1>Hacker News: The site where you provide the news</h1>
-<a href='/create_post'>Create a new Post</a>
-<ol>
-  <% @posts.each do |post| %>
-  <li>
-    <a href="<%= post.url %>"> <%= post.title %> </a> | <a href="<%= post.url %>"> <%= post.url %> </a>
-    <p><a href="/user/<%= User.find(post.user_id).id %>"> <%= User.find(post.user_id).name %></a> | <a href="/post/comments/<%= post.id %>">Comments</a></p>
-  </li>
-  <% end %>
-</ol>
+<div class="all_posts">
+  <%= erb :_all_posts %>
+</div>
 
 <div class='registration'>
   <h4>Register to submit posts and comments</h4>
