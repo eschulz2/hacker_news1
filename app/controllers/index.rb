@@ -64,7 +64,11 @@ post '/created_post' do
     @user = User.find(session[:user_id])
     @user.posts << @post
 
-    redirect to '/'
+    if request.xhr?
+      erb :_single_post, layout: false, locals: {post: @post}
+    else
+      redirect to '/'
+    end
   else
     redirect to '/'
   end

@@ -18,7 +18,10 @@ $(document).ready(function() {
     var url = $ourForm.attr('action')
     var data = $ourForm.serialize()
     $.post(url, data, function(response) {
-      $('.all_posts').html(response);
+      // console.log(response)
+      // $('.all_posts').html(response);
+      $("ol#posts_list").append(response);
+      $ourForm.remove();
     })
   })
 

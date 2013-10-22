@@ -1,0 +1,4 @@
+<li>
+    <a href="<%= post.url %>"> <%= post.title %> </a> | <a href="<%= post.url %>"> <%= post.url %> </a>
+    <p><a href="/user/<%= User.find(post.user_id).id %>"> <%= User.find(post.user_id).name %></a> | <a href="/post/comments/<%= post.id %>">Comments</a></p>
+  </li>
